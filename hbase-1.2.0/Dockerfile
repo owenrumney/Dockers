@@ -3,10 +3,13 @@ MAINTAINER Owen Rumney <owen.rumney@gmail.com>
 
 RUN yum install -y java-1.8.0-openjdk.x86_64
 ENV JAVA_HOME=/usr/lib/jvm/jre
+ENV HBASE_HOME=/opt/hbase-1.2.0
+ENV JAVA_LIBRARY_PATH   $HBASE_HOME/lib/native
 
 RUN yum install -y wget
 RUN yum install -y nc
 RUN yum install -y tar
+RUN yum install -y snappy
 
 RUN mkdir /hbase-setup
 WORKDIR /hbase-setup

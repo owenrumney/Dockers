@@ -1,0 +1,27 @@
+version: '2'
+services:
+  kafka_box:
+    image: "orconservices/kafka:10.2.1"
+    ports:
+      - "2181:2181"
+      - "9092:9092"
+    environment:
+      - ADVERTISED_HOST=0.0.0.0
+      - ADVERTISED_PORT=9092
+  hbase_box:
+    image: "orconservices/hbase:1.2.0"
+    hostname: "hbase_box"
+    ports:
+      - "2222:2181"
+      - "60010:60010"
+      - "60000:60000"
+      - "60020:60020"
+      - "60030:60030"
+      - "9090:9090"
+  elk_box:
+    image: "elastic-elk:5.6.2"
+    hostname: "elk_box"
+    ports:
+      - "5601:5601"
+      - "4561:4561"
+      - "5044:5044"

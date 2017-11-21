@@ -1,0 +1,56 @@
+== Info: Rebuilt URL to: PUT/
+== Info: Could not resolve host: PUT
+== Info: Closing connection 0
+== Info:   Trying ::1...
+== Info: TCP_NODELAY set
+== Info: Connected to localhost (::1) port 8082 (#1)
+=> Send header, 282 bytes (0x11a)
+0000: POST /file/IABS_IDENTITY_74405124AS HTTP/1.1
+002e: Host: localhost:8082
+0044: User-Agent: curl/7.54.0
+005d: Accept: */*
+006a: Cache-Control: no-cache
+0083: Content-Length: 673
+0098: Expect: 100-continue
+00ae: Content-Type: multipart/form-data; boundary=*******~-; boundary=
+00ee: ------------------------992a78e2be76d87e
+0118: 
+<= Recv header, 15 bytes (0xf)
+0000: HTTP/1.1 100 
+=> Send data, 625 bytes (0x271)
+0000: --------------------------992a78e2be76d87e
+002c: Content-Disposition: form-data; name="filehandle"
+005f: Content-Type: application/json
+007f: 
+0081: {"unique_identifier":"identity1","visibility_marker":"DEFAULT","
+00c1: interface_identifier":"identityId"}
+00e6: --------------------------992a78e2be76d87e
+0112: Content-Disposition: form-data; name="contenttype"
+0146: 
+0148: JPG
+014d: --------------------------992a78e2be76d87e
+0179: Content-Disposition: form-data; name="created"
+01a9: Content-Type: application/json
+01c9: 
+01cb: "2016-06-29T10:47"
+01df: --------------------------992a78e2be76d87e
+020b: Content-Disposition: form-data; name="content"; filename="test.x
+024b: ml"
+0250: Content-Type: application/xml
+026f: 
+=> Send data, 48 bytes (0x30)
+0000: 
+0002: --------------------------992a78e2be76d87e--
+<= Recv header, 15 bytes (0xf)
+0000: HTTP/1.1 405 
+<= Recv header, 32 bytes (0x20)
+0000: Allow: HEAD, GET, OPTIONS, PUT
+<= Recv header, 19 bytes (0x13)
+0000: Content-Length: 0
+<= Recv header, 37 bytes (0x25)
+0000: Date: Thu, 02 Nov 2017 12:29:59 GMT
+<= Recv header, 19 bytes (0x13)
+0000: Connection: close
+<= Recv header, 2 bytes (0x2)
+0000: 
+== Info: Closing connection 1

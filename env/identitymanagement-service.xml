@@ -1,0 +1,133 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!--
+  Licensed to the Apache Software Foundation (ASF) under one or more
+  contributor license agreements.  See the NOTICE file distributed with
+  this work for additional information regarding copyright ownership.
+  The ASF licenses this file to You under the Apache License, Version 2.0
+  (the "License"); you may not use this file except in compliance with
+  the License.  You may obtain a copy of the License at
+
+      http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!-- The contents of this file will be loaded for each web application -->
+<Context override="true">
+
+    <!-- Default set of monitored resources. If one of these changes, the    -->
+    <!-- web application will be reloaded.                                   -->
+    <WatchedResource>WEB-INF/web.xml</WatchedResource>
+    <WatchedResource>${catalina.base}/conf/web.xml</WatchedResource>
+
+    <!-- Uncomment this to disable session persistence across Tomcat restarts -->
+    <!--
+    <Manager pathname="" />
+    -->
+
+    <!-- Uncomment this to enable Comet connection tacking (provides events
+         on session expiration as well as webapp lifecycle) -->
+    <!--
+    <Valve className="org.apache.catalina.valves.CometConnectionManagerValve" />
+    -->
+    <!--<Environment name="identityManagement/persistenceServiceUri" type="java.lang.String" value="http://dtsim01-dazo-csdpci1.node.np.iptho.co.uk:8080/dataplatform-services"/>-->
+    <Environment name="identityManagement/persistenceServiceUri" type="java.lang.String"
+                 value="http://dtsim01-dazo-csdpci1.node.np.iptho.co.uk:8080/identitymanagement-persistence-services"/>
+    <Environment name="identityManagement/eventHistoryPersistenceServiceUri" type="java.lang.String"
+                 value="http://dtsim01-dazo-csdpci1.node.np.iptho.co.uk:8080/eventhistory-persistence-services"/>
+    <Environment name="identityManagement/fileManagementServiceUri" type="java.lang.String"
+                 value="http://dtsim01-dazo-csdpci1.node.np.iptho.co.uk:8080/filemanagement-services"></Environment>
+    <Environment name="identityManagement/referenceDataServiceUri" type="java.lang.String" value="http://dtsim01-dazo-csdpci1.node.np.iptho.co.uk:8080/ipt-ss-reference-data-services"/>
+
+    <Environment name="identityManagement/hystrix/command/default/execution/isolation/thread/timeoutInMilliseconds" type="java.lang.Integer"
+                 value="60000"></Environment>
+    <Environment name="identityManagement/hystrix/threadpool/default/coreSize" type="java.lang.Integer"
+                 value="250"></Environment>
+    <Environment name="identityManagement/hystrix/threadpool/default/maxQueueSize" type="java.lang.Integer"
+                 value="125"></Environment>
+    <Environment name="identityManagement/hystrix/threadpool/default/queueSizeRejectionThreshold" type="java.lang.Integer"
+                 value="125"></Environment>
+    <Environment name="identityManagement/hystrix/threadpool/default/maximumSize" type="java.lang.Integer"
+                 value="250"></Environment>
+    <Environment name="identityManagement/hystrix/threadpool/default/allowMaximumSizeToDivergeFromCoreSize" type="java.lang.Boolean"
+                 value="false"></Environment>
+    <Environment name="identityManagement/connectionPoolSize" type="java.lang.Integer" value="200"></Environment>
+
+<Environment name="identityManagement/hbase/zookeeper/quorum" type="java.lang.String" value="hzkim01-dazo-csdpci1.node.np.iptho.co.uk,hzkim02-dazo-csdpci1.node.np.iptho.co.uk,hzkim03-dazo-csdpci1.node.np.iptho.co.uk"/>
+    <Environment name="identityManagement/IN_MEMORY" type="java.lang.String" value="FALSE"/>
+    <Environment name="identityManagement/namespacePrefix" type="java.lang.String" value="npcsdpci1dazo_fresh"/>
+    <Environment name="identityManagement/identitymanagementtopic" type="java.lang.String" value="IdentityManagement"/>
+
+    <!-- Kafka properties -->
+    <Environment name="identityManagement/zookeeper/connect" type="java.lang.String" value="hzkim01-dazo-csdpci1.node.np.iptho.co.uk:2181,hzkim02-dazo-csdpci1.node.np.iptho.co.uk:2181,hzkim03-dazo-csdpci1.node.np.iptho.co.uk:2181" />
+    <Environment name="identityManagement/kafka/connect"     type="java.lang.String" value="hkfim01-dazo-csdpci1.node.np.iptho.co.uk:6667,hkfim02-dazo-csdpci1.node.np.iptho.co.uk:6667,hkfim03-dazo-csdpci1.node.np.iptho.co.uk:6667" />
+    <Environment name="identityManagement/WRITE_QUEUE"       type="java.lang.String" value="true" />
+    <Environment name="identityManagement/WRITE_DB"       type="java.lang.String" value="false" />
+    <Environment name="identityManagement/WRITE_CDC"       type="java.lang.String" value="false" />
+    <Environment name="identityManagement/kafka/topicPrefix" type="java.lang.String" value="np-csdpci1-dazo_fresh_" />
+
+    <Environment name="identityManagement/hystrix/threadpool/default/coreSize" type="java.lang.Integer" value="250"></Environment>
+    <Environment name="identityManagement/hystrix/threadpool/default/maximumSize" type="java.lang.Integer" value="250"></Environment>
+    <Environment name="identityManagement/hystrix/threadpool/default/allowMaximumSizeToDivergeFromCoreSize" type="java.lang.Boolean" value="false"></Environment>
+    <Environment name="identityManagement/hystrix/threadpool/default/maxQueueSize" type="java.lang.Integer" value="-1"></Environment>
+    <Environment name="identityManagement/hystrix/threadpool/default/queueSizeRejectionThreshold" type="java.lang.Integer" value="5"></Environment>
+
+        <!-- Hanker Properties -->
+        <Environment name="identityManagement/sessionfactory/poolsize"  type="java.lang.Integer" value="$IM_SESSIONFACTORY_POOLSIZE"/>
+        <Environment name="identityManagement/sessionfactory/builderwait"  type="java.lang.Long" value="$IM_SESSIONFACTORY_BUILDERWAIT"/>
+        <Environment name="identityManagement/sessionfactory/nextwait"  type="java.lang.Long" value="$IM_SESSIONFACTORY_NEXTWAIT"/>
+        <Environment name="identityManagement/session/factoryclass"  type="java.lang.String" value="hanker.hbase.client.FailFastSessionFactory"/>
+        <Environment name="identityManagement/dao/factoryclass"  type="java.lang.String" value="hanker.db.io.RetryingDaoInstanceFactory"/>
+        <Environment name="identityManagement/dao/retry/wait"  type="java.lang.Integer" value="10"/>
+        <Environment name="identityManagement/dao/retry/maxwait"  type="java.lang.Integer" value="50"/>
+        <Environment name="identityManagement/dao/retry/maxretries"  type="java.lang.Integer" value="3"/>
+        <Environment name="identityManagement/hbase/connection/reset/failurethreashold"  type="java.lang.Integer" value="50"/>
+        <Environment name="identityManagement/hbase/connection/reset/failurewindowsize"  type="java.lang.Integer" value="25"/>
+        <Environment name="identityManagement/hbase/client/buffersize"  type="java.lang.Long" value="2097152"/>
+        <Environment name="identityManagement/hbase/client/connectioncorethreads"  type="java.lang.Integer" value="256"/>
+        <Environment name="identityManagement/hbase/client/connectionmaxthreads"  type="java.lang.Integer" value="256"/>
+        <Environment name="identityManagement/hbase/client/connectionthreadkeepalive"  type="java.lang.Integer" value="60"/>
+        <Environment name="identityManagement/hbase/client/fast/fail/mode/enabled"  type="java.lang.Boolean" value="FALSE"/>
+        <Environment name="identityManagement/hbase/client/fast/fail/cleanup/duration"  type="java.lang.Integer" value="600000"/>
+        <Environment name="identityManagement/hbase/client/fastfail/threshold"  type="java.lang.Integer" value="600000"/>
+        <Environment name="identityManagement/hbase/client/ipc/pool/size"  type="java.lang.Integer" value="10"/>
+        <Environment name="identityManagement/hbase/client/ipc/pool/type"  type="java.lang.String" value="roundrobin"/>
+        <Environment name="identityManagement/hbase/client/max/perregion/tasks"  type="java.lang.Integer" value="25"/>
+        <Environment name="identityManagement/hbase/client/max/perserver/tasks"  type="java.lang.Integer" value="5"/>
+        <Environment name="identityManagement/hbase/client/max/total/tasks"  type="java.lang.Integer" value="100"/>
+        <Environment name="identityManagement/hbase/client/meta/operation/timeout"  type="java.lang.Integer" value="1200000"/>
+        <Environment name="identityManagement/hbase/client/operationtimeout"  type="java.lang.Integer" value="10000"/>
+        <Environment name="identityManagement/hbase/client/pause"  type="java.lang.Integer" value="100"/>
+        <Environment name="identityManagement/hbase/client/retries"  type="java.lang.Integer" value="31"/>
+        <Environment name="identityManagement/hbase/client/scanner/caching"  type="java.lang.Integer" value="2147483647"/>
+        <Environment name="identityManagement/hbase/client/scanner/max/result/size"  type="java.lang.Integer" value="2097152"/>
+        <Environment name="identityManagement/hbase/client/scanner/timeout/period"  type="java.lang.Integer" value="60000"/>
+        <Environment name="identityManagement/hbase/rpc/timeout"  type="java.lang.Integer" value="60000"/>
+        <Environment name="identityManagement/connection/threading/execution/service"  type="java.lang.String" value="builtin"/>
+        <Environment name="identityManagement/connection/threading/fixedpool/size"  type="java.lang.Integer" value="25"/>
+        <Environment name="identityManagement/threading/execution/service"  type="java.lang.String" value="builtin"/>
+        <Environment name="identityManagement/threading/fixedpool/size"  type="java.lang.Integer" value="25"/>
+        <Environment name="identityManagement/kafka/replicas"  type="java.lang.Integer" value="3"/>
+        <Environment name="identityManagement/kafka/partitions"  type="java.lang.Integer" value="5"/>
+        <Environment name="identityManagement/kafka/acks"  type="java.lang.String" value="all"/>
+        <Environment name="identityManagement/kafka/buffer/memory"  type="java.lang.Long" value="33554432"/>
+        <Environment name="identityManagement/kafka/batch/size"  type="java.lang.Integer" value="16384"/>
+        <Environment name="identityManagement/kafka/retries"  type="java.lang.Integer" value="3"/>
+        <Environment name="identityManagement/kafka/connections/max/idle/ms"  type="java.lang.Long" value="540000"/>
+        <Environment name="identityManagement/kafka/linger/ms"  type="java.lang.Long" value="0"/>
+        <Environment name="identityManagement/kafka/max/block/ms"  type="java.lang.Long" value="60000"/>
+        <Environment name="identityManagement/kafka/max/request/size"  type="java.lang.Integer" value="5000000"/>
+        <Environment name="identityManagement/kafka/request/timeout/ms"  type="java.lang.Integer" value="30000"/>
+        <Environment name="identityManagement/kafka/timeout/ms"  type="java.lang.Integer" value="30000"/>
+        <Environment name="identityManagement/kafka/block/on/buffer/full"  type="java.lang.Boolean" value="TRUE"/>
+        <Environment name="identityManagement/kafka/max/in/flight/requests/per/connection"  type="java.lang.Integer" value="5"/>
+        <Environment name="identityManagement/kafka/reconnect/backoff/ms"  type="java.lang.Long" value="50"/>
+        <Environment name="identityManagement/kafka/retry/backoff/ms"  type="java.lang.Long" value="100"/>
+        <Environment name="identityManagement/kafka/circuit/openafter"  type="java.lang.Integer" value="10"/>
+        <Environment name="identityManagement/kafka/circuit/closeafter"  type="java.lang.Integer" value="50"/>
+        <Environment name="identityManagement/kafka/circuit/closeafterunit"  type="java.lang.String" value="MILLISECONDS"/>
+
+</Context>

@@ -1,0 +1,29 @@
+version: '2'
+services:
+  kafka_box:
+    image: "orconservices/kafka:10.2.1"
+    ports:
+      - "2181:2181"
+      - "9092:9092"
+    environment:
+      - ADVERTISED_HOST=0.0.0.0
+      - ADVERTISED_PORT=9092
+  hbase_box:
+    image: "orconservices/hbase:1.2.0"
+    hostname: "hbase_box"
+    ports:
+      - "2222:2181"
+      - "60010:60010"
+      - "60000:60000"
+      - "60020:60020"
+      - "60030:60030"
+      - "9090:9090"
+  tomcat:
+    image: "orconservices/tomcat:latest"
+    hostname: "tomcat_box"
+    ports:
+      - "8888:8080"
+    volumes:
+      - /Users/owen/ho/ipt-ss-file-management/Function/services-persistence-web/target/filemanagement-persistence-services:/usr/local/tomcat/webapps/filemanagement-persistence-services
+      - /Users/owen/ho/ipt-ss-file-management/Function/services-web/target/filemanagement-services:/usr/local/tomcat/webapps/filemanagement-services
+

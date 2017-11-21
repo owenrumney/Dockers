@@ -1,0 +1,28 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    name: hbase-box
+  name: hbase-box
+spec:
+  replicas: 1
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        name: hbase-box
+    spec:
+      containers:
+      - image: orconservices/hbase:1.2.0
+        name: hbase-box
+        ports:
+        - containerPort: 2181
+        - containerPort: 60010
+        - containerPort: 60000
+        - containerPort: 60020
+        - containerPort: 60030
+        - containerPort: 9090
+        resources: {}
+      restartPolicy: Always
+status: {}

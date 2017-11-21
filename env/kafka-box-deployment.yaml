@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kafka-box
+  labels:
+    name: kafka-box
+spec:
+  containers:
+  - env:
+    - name: ADVERTISED_HOST
+      value: kafka-box
+    - name: ADVERTISED_PORT
+      value: "30092"
+    image: orconservices/kafka:10.2.1
+    name: kafka-box
+    ports:
+    - containerPort: 2181
+    - containerPort: 9092
+    resources:
+      limits:
+        memory: "550Mi"

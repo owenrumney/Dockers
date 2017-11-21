@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    name: kafka-box
+  name: kafka-box
+spec:
+  ports:
+  - name: "2181"
+    port: 2181
+    nodePort: 30081
+  - name: "9092"
+    port: 9092
+    nodePort: 30092
+  selector:
+    name: kafka-box
+  type: NodePort
